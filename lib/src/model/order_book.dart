@@ -1,7 +1,7 @@
 class OrderBookModel {
   final String symbol;
-  final List<OrderBookEntryModel> bids;
-  final List<OrderBookEntryModel> asks;
+  final List<OrderBookEntry> bids;
+  final List<OrderBookEntry> asks;
   final int timestamp;
 
   OrderBookModel(this.symbol, this.bids, this.asks, this.timestamp);
@@ -13,14 +13,14 @@ class OrderBookModel {
         a.map((e) => e.map((e) => double.parse(e)).toList()).toList(); // mehh.
     ///////
 
-    final List<OrderBookEntryModel> bids = List<dynamic>.from(json['b'])
+    final List<OrderBookEntry> bids = List<dynamic>.from(json['b'])
         .map((entry) =>
-            OrderBookEntryModel(double.parse(entry[0]), double.parse(entry[1])))
+            OrderBookEntry(double.parse(entry[0]), double.parse(entry[1])))
         .toList();
 
-    final List<OrderBookEntryModel> asks = List<dynamic>.from(json['a'])
+    final List<OrderBookEntry> asks = List<dynamic>.from(json['a'])
         .map((entry) =>
-            OrderBookEntryModel(double.parse(entry[0]), double.parse(entry[1])))
+            OrderBookEntry(double.parse(entry[0]), double.parse(entry[1])))
         .toList();
 
     return OrderBookModel(
@@ -32,9 +32,9 @@ class OrderBookModel {
   }
 }
 
-class OrderBookEntryModel {
+class OrderBookEntry {
   final double price;
   final double quantity;
 
-  OrderBookEntryModel(this.price, this.quantity);
+  OrderBookEntry(this.price, this.quantity);
 }

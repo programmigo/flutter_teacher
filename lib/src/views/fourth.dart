@@ -12,7 +12,7 @@ class FourthScreen extends GetView<OrderBookController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Third"),
+        title: const Text("Order Book"),
       ),
       body: Obx(
         () => SingleChildScrollView(
@@ -126,7 +126,7 @@ class FourthScreen extends GetView<OrderBookController> {
   }
 
   Widget _buildOrderBookItem(
-      OrderBookEntryModel orderBookEntry, double maxValue, OrderBookSide side) {
+      OrderBookEntry orderBookEntry, double maxValue, OrderBookSide side) {
     List<Color> colors;
     double stop;
 
