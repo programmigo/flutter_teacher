@@ -1,7 +1,7 @@
-import 'package:flutter_application_1/src/bindings/counter_binding.dart';
-import 'package:flutter_application_1/src/bindings/orderbook_binding.dart';
+import 'package:flutter_application_1/src/feature/order_book/views/order_book.dart';
 import 'package:flutter_application_1/src/routes/app_routes.dart';
-import 'package:flutter_application_1/src/views/fourth.dart';
+import 'package:flutter_application_1/src/routes/bindings/counter_binding.dart';
+import 'package:flutter_application_1/src/routes/bindings/orderbook_binding.dart';
 import 'package:flutter_application_1/src/views/home.dart';
 import 'package:flutter_application_1/src/views/second.dart';
 import 'package:flutter_application_1/src/views/third.dart';
@@ -23,8 +23,8 @@ class AppPages {
       binding: CounterBinding(),
     ),
     GetPage(
-      name: Routes.fourth,
-      page: () => const FourthScreen(),
+      name: Routes.orderBook,
+      page: () => const OrderBookScreen(),
       binding: OrderBookBinding(),
     ),
   ];

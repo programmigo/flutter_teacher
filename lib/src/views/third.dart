@@ -35,7 +35,7 @@ class ThirdScreen extends GetView<CounterController> {
               child: const Text("Go Back"),
             ),
             ElevatedButton(
-              onPressed: () => Get.toNamed(Routes.fourth),
+              onPressed: () => Get.toNamed(Routes.orderBook),
               child: const Text("Continue"),
             ),
           ],

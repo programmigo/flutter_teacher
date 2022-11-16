@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/controllers/orderbook_controller.dart';
+import 'package:flutter_application_1/src/feature/order_book/controllers/order_book.dart';
 import 'package:flutter_application_1/src/model/order_book.dart';
 import 'package:get/get.dart';
 
 enum OrderBookSide { bid, ask }
 
-class FourthScreen extends GetView<OrderBookController> {
-  const FourthScreen({super.key});
+class OrderBookScreen extends GetView<OrderBookController> {
+  const OrderBookScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
