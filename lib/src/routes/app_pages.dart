@@ -1,4 +1,4 @@
-import 'package:flutter_application_1/src/feature/order_book/views/order_book.dart';
+import 'package:flutter_application_1/src/feature/order_book/views/order_book_screen.dart';
 import 'package:flutter_application_1/src/routes/app_routes.dart';
 import 'package:flutter_application_1/src/routes/bindings/counter_binding.dart';
 import 'package:flutter_application_1/src/routes/bindings/orderbook_binding.dart';

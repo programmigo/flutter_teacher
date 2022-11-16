@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/feature/order_book/controllers/order_book.dart';
-import 'package:flutter_application_1/src/model/order_book.dart';
+import 'package:flutter_application_1/src/feature/order_book/controllers/order_book_controller.dart';
+import 'package:flutter_application_1/src/feature/order_book/model/order_book_model.dart';
 import 'package:get/get.dart';
 
 enum OrderBookSide { bid, ask }
@@ -126,7 +126,7 @@ class OrderBookScreen extends GetView<OrderBookController> {
   }
 
   Widget _buildOrderBookItem(
-      OrderBookEntry orderBookEntry, double maxValue, OrderBookSide side) {
+      OrderBookEntryModel orderBookEntry, double maxValue, OrderBookSide side) {
     List<Color> colors;
     double stop;
 

@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/feature/order_book/model/order_book_model.dart';
 import 'package:flutter_application_1/src/http_service.dart';
-import 'package:flutter_application_1/src/model/order_book.dart';
 import 'package:get/get.dart';
 
 class OrderBookController extends GetxController {
@@ -36,6 +36,6 @@ class OrderBookController extends GetxController {
       },
     );
 
-    return OrderBookModel.fromJson(response.data['result']);
+    return OrderBookResponse.fromJson(response.data['result']).orderBook;
   }
 }
