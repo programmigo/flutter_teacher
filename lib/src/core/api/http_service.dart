@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
-class HttpService {
-  final Dio _dio = Dio(BaseOptions(baseUrl: 'https://api-testnet.bybit.com'));
+abstract class HttpService {
+  abstract Dio dio;
 
   HttpService() {
     // initializeInterceptors(); // TODO
   }
 
   initializeInterceptors() {
-    _dio.interceptors.add(InterceptorsWrapper(
+    dio.interceptors.add(InterceptorsWrapper(
       onError: (error, handler) {
         debugPrint(error.message);
       },
@@ -26,7 +26,7 @@ class HttpService {
       {Map<String, dynamic>? queryParameters}) async {
     Response response;
     try {
-      response = await _dio.get(
+      response = await dio.get(
         endpoint,
         queryParameters: queryParameters,
       );
