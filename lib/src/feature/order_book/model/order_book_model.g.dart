@@ -10,12 +10,16 @@ _$_OrderBookResponse _$$_OrderBookResponseFromJson(Map<String, dynamic> json) =>
     _$_OrderBookResponse(
       orderBook:
           OrderBookModel.fromJson(json['result'] as Map<String, dynamic>),
+      returnMessage: json['retMsg'] as String,
+      returnCode: json['retCode'] as int,
     );
 
 Map<String, dynamic> _$$_OrderBookResponseToJson(
         _$_OrderBookResponse instance) =>
     <String, dynamic>{
       'result': instance.orderBook,
+      'retMsg': instance.returnMessage,
+      'retCode': instance.returnCode,
     };
 
 _$_OrderBookModel _$$_OrderBookModelFromJson(Map<String, dynamic> json) =>

@@ -22,6 +22,10 @@ OrderBookResponse _$OrderBookResponseFromJson(Map<String, dynamic> json) {
 mixin _$OrderBookResponse {
   @JsonKey(name: 'result')
   OrderBookModel get orderBook => throw _privateConstructorUsedError;
+  @JsonKey(name: 'retMsg')
+  String get returnMessage => throw _privateConstructorUsedError;
+  @JsonKey(name: 'retCode')
+  int get returnCode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +39,10 @@ abstract class $OrderBookResponseCopyWith<$Res> {
           OrderBookResponse value, $Res Function(OrderBookResponse) then) =
       _$OrderBookResponseCopyWithImpl<$Res, OrderBookResponse>;
   @useResult
-  $Res call({@JsonKey(name: 'result') OrderBookModel orderBook});
+  $Res call(
+      {@JsonKey(name: 'result') OrderBookModel orderBook,
+      @JsonKey(name: 'retMsg') String returnMessage,
+      @JsonKey(name: 'retCode') int returnCode});
 
   $OrderBookModelCopyWith<$Res> get orderBook;
 }
@@ -54,12 +61,22 @@ class _$OrderBookResponseCopyWithImpl<$Res, $Val extends OrderBookResponse>
   @override
   $Res call({
     Object? orderBook = null,
+    Object? returnMessage = null,
+    Object? returnCode = null,
   }) {
     return _then(_value.copyWith(
       orderBook: null == orderBook
           ? _value.orderBook
           : orderBook // ignore: cast_nullable_to_non_nullable
               as OrderBookModel,
+      returnMessage: null == returnMessage
+          ? _value.returnMessage
+          : returnMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+      returnCode: null == returnCode
+          ? _value.returnCode
+          : returnCode // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 
@@ -80,7 +97,10 @@ abstract class _$$_OrderBookResponseCopyWith<$Res>
       __$$_OrderBookResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@JsonKey(name: 'result') OrderBookModel orderBook});
+  $Res call(
+      {@JsonKey(name: 'result') OrderBookModel orderBook,
+      @JsonKey(name: 'retMsg') String returnMessage,
+      @JsonKey(name: 'retCode') int returnCode});
 
   @override
   $OrderBookModelCopyWith<$Res> get orderBook;
@@ -98,12 +118,22 @@ class __$$_OrderBookResponseCopyWithImpl<$Res>
   @override
   $Res call({
     Object? orderBook = null,
+    Object? returnMessage = null,
+    Object? returnCode = null,
   }) {
     return _then(_$_OrderBookResponse(
       orderBook: null == orderBook
           ? _value.orderBook
           : orderBook // ignore: cast_nullable_to_non_nullable
               as OrderBookModel,
+      returnMessage: null == returnMessage
+          ? _value.returnMessage
+          : returnMessage // ignore: cast_nullable_to_non_nullable
+              as String,
+      returnCode: null == returnCode
+          ? _value.returnCode
+          : returnCode // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -112,7 +142,9 @@ class __$$_OrderBookResponseCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_OrderBookResponse implements _OrderBookResponse {
   const _$_OrderBookResponse(
-      {@JsonKey(name: 'result') required this.orderBook});
+      {@JsonKey(name: 'result') required this.orderBook,
+      @JsonKey(name: 'retMsg') required this.returnMessage,
+      @JsonKey(name: 'retCode') required this.returnCode});
 
   factory _$_OrderBookResponse.fromJson(Map<String, dynamic> json) =>
       _$$_OrderBookResponseFromJson(json);
@@ -120,10 +152,16 @@ class _$_OrderBookResponse implements _OrderBookResponse {
   @override
   @JsonKey(name: 'result')
   final OrderBookModel orderBook;
+  @override
+  @JsonKey(name: 'retMsg')
+  final String returnMessage;
+  @override
+  @JsonKey(name: 'retCode')
+  final int returnCode;
 
   @override
   String toString() {
-    return 'OrderBookResponse(orderBook: $orderBook)';
+    return 'OrderBookResponse(orderBook: $orderBook, returnMessage: $returnMessage, returnCode: $returnCode)';
   }
 
   @override
@@ -132,12 +170,17 @@ class _$_OrderBookResponse implements _OrderBookResponse {
         (other.runtimeType == runtimeType &&
             other is _$_OrderBookResponse &&
             (identical(other.orderBook, orderBook) ||
-                other.orderBook == orderBook));
+                other.orderBook == orderBook) &&
+            (identical(other.returnMessage, returnMessage) ||
+                other.returnMessage == returnMessage) &&
+            (identical(other.returnCode, returnCode) ||
+                other.returnCode == returnCode));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, orderBook);
+  int get hashCode =>
+      Object.hash(runtimeType, orderBook, returnMessage, returnCode);
 
   @JsonKey(ignore: true)
   @override
@@ -156,7 +199,9 @@ class _$_OrderBookResponse implements _OrderBookResponse {
 
 abstract class _OrderBookResponse implements OrderBookResponse {
   const factory _OrderBookResponse(
-          {@JsonKey(name: 'result') required final OrderBookModel orderBook}) =
+          {@JsonKey(name: 'result') required final OrderBookModel orderBook,
+          @JsonKey(name: 'retMsg') required final String returnMessage,
+          @JsonKey(name: 'retCode') required final int returnCode}) =
       _$_OrderBookResponse;
 
   factory _OrderBookResponse.fromJson(Map<String, dynamic> json) =
@@ -165,6 +210,12 @@ abstract class _OrderBookResponse implements OrderBookResponse {
   @override
   @JsonKey(name: 'result')
   OrderBookModel get orderBook;
+  @override
+  @JsonKey(name: 'retMsg')
+  String get returnMessage;
+  @override
+  @JsonKey(name: 'retCode')
+  int get returnCode;
   @override
   @JsonKey(ignore: true)
   _$$_OrderBookResponseCopyWith<_$_OrderBookResponse> get copyWith =>

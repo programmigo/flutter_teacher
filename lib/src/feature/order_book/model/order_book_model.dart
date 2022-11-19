@@ -9,6 +9,8 @@ part 'order_book_model.g.dart';
 class OrderBookResponse with _$OrderBookResponse {
   const factory OrderBookResponse({
     @JsonKey(name: 'result') required OrderBookModel orderBook,
+    @JsonKey(name: 'retMsg') required String returnMessage,
+    @JsonKey(name: 'retCode') required int returnCode,
   }) = _OrderBookResponse;
 
   factory OrderBookResponse.fromJson(Map<String, Object?> json) =>

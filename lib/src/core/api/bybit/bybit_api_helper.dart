@@ -17,7 +17,6 @@ class BybitApiHelper implements ApiHelper {
         'symbol': symbol,
       },
     );
-
-    return OrderBookResponse.fromJson(response.data['result']).orderBook;
+    return OrderBookResponse.fromJson(response.data).orderBook;
   }
 }
