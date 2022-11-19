@@ -8,11 +8,11 @@ part 'order_book_model.g.dart';
 
 @freezed
 class OrderBookResponse with _$OrderBookResponse {
-  const factory OrderBookResponse({
+  const factory OrderBookResponse.bybit({
     @JsonKey(name: 'result') required OrderBookModel orderBook,
     @JsonKey(name: 'retMsg') required String returnMessage,
     @JsonKey(name: 'retCode') required int returnCode,
-  }) = _OrderBookResponse;
+  }) = _OrderBookResponseBybit;
 
   factory OrderBookResponse.fromJson(Map<String, Object?> json) =>
       _$OrderBookResponseFromJson(json);
@@ -20,14 +20,23 @@ class OrderBookResponse with _$OrderBookResponse {
 
 @freezed
 class OrderBookModel with _$OrderBookModel {
-  const factory OrderBookModel({
+  const factory OrderBookModel.binance({
+    @JsonKey(name: 'symbol') required String symbol,
+    @JsonKey(name: 'T') required int timestamp,
+    @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+        required List<OrderBookEntryModel> bids,
+    @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+        required List<OrderBookEntryModel> asks,
+  }) = _OrderBookModelBinance;
+
+  const factory OrderBookModel.bybit({
     @JsonKey(name: 's') required String symbol,
     @JsonKey(name: 'ts') required int timestamp,
     @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
         required List<OrderBookEntryModel> bids,
     @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
         required List<OrderBookEntryModel> asks,
-  }) = _OrderBookModel;
+  }) = _OrderBookModelBybit;
 
   factory OrderBookModel.fromJson(Map<String, Object?> json) =>
       _$OrderBookModelFromJson(json);

@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 OrderBookResponse _$OrderBookResponseFromJson(Map<String, dynamic> json) {
-  return _OrderBookResponse.fromJson(json);
+  return _OrderBookResponseBybit.fromJson(json);
 }
 
 /// @nodoc
@@ -26,7 +26,50 @@ mixin _$OrderBookResponse {
   String get returnMessage => throw _privateConstructorUsedError;
   @JsonKey(name: 'retCode')
   int get returnCode => throw _privateConstructorUsedError;
-
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            @JsonKey(name: 'result') OrderBookModel orderBook,
+            @JsonKey(name: 'retMsg') String returnMessage,
+            @JsonKey(name: 'retCode') int returnCode)
+        bybit,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            @JsonKey(name: 'result') OrderBookModel orderBook,
+            @JsonKey(name: 'retMsg') String returnMessage,
+            @JsonKey(name: 'retCode') int returnCode)?
+        bybit,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'result') OrderBookModel orderBook,
+            @JsonKey(name: 'retMsg') String returnMessage,
+            @JsonKey(name: 'retCode') int returnCode)?
+        bybit,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OrderBookResponseBybit value) bybit,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OrderBookResponseBybit value)? bybit,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OrderBookResponseBybit value)? bybit,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $OrderBookResponseCopyWith<OrderBookResponse> get copyWith =>
@@ -90,11 +133,11 @@ class _$OrderBookResponseCopyWithImpl<$Res, $Val extends OrderBookResponse>
 }
 
 /// @nodoc
-abstract class _$$_OrderBookResponseCopyWith<$Res>
+abstract class _$$_OrderBookResponseBybitCopyWith<$Res>
     implements $OrderBookResponseCopyWith<$Res> {
-  factory _$$_OrderBookResponseCopyWith(_$_OrderBookResponse value,
-          $Res Function(_$_OrderBookResponse) then) =
-      __$$_OrderBookResponseCopyWithImpl<$Res>;
+  factory _$$_OrderBookResponseBybitCopyWith(_$_OrderBookResponseBybit value,
+          $Res Function(_$_OrderBookResponseBybit) then) =
+      __$$_OrderBookResponseBybitCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -107,11 +150,11 @@ abstract class _$$_OrderBookResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_OrderBookResponseCopyWithImpl<$Res>
-    extends _$OrderBookResponseCopyWithImpl<$Res, _$_OrderBookResponse>
-    implements _$$_OrderBookResponseCopyWith<$Res> {
-  __$$_OrderBookResponseCopyWithImpl(
-      _$_OrderBookResponse _value, $Res Function(_$_OrderBookResponse) _then)
+class __$$_OrderBookResponseBybitCopyWithImpl<$Res>
+    extends _$OrderBookResponseCopyWithImpl<$Res, _$_OrderBookResponseBybit>
+    implements _$$_OrderBookResponseBybitCopyWith<$Res> {
+  __$$_OrderBookResponseBybitCopyWithImpl(_$_OrderBookResponseBybit _value,
+      $Res Function(_$_OrderBookResponseBybit) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -121,7 +164,7 @@ class __$$_OrderBookResponseCopyWithImpl<$Res>
     Object? returnMessage = null,
     Object? returnCode = null,
   }) {
-    return _then(_$_OrderBookResponse(
+    return _then(_$_OrderBookResponseBybit(
       orderBook: null == orderBook
           ? _value.orderBook
           : orderBook // ignore: cast_nullable_to_non_nullable
@@ -140,14 +183,14 @@ class __$$_OrderBookResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderBookResponse implements _OrderBookResponse {
-  const _$_OrderBookResponse(
+class _$_OrderBookResponseBybit implements _OrderBookResponseBybit {
+  const _$_OrderBookResponseBybit(
       {@JsonKey(name: 'result') required this.orderBook,
       @JsonKey(name: 'retMsg') required this.returnMessage,
       @JsonKey(name: 'retCode') required this.returnCode});
 
-  factory _$_OrderBookResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderBookResponseFromJson(json);
+  factory _$_OrderBookResponseBybit.fromJson(Map<String, dynamic> json) =>
+      _$$_OrderBookResponseBybitFromJson(json);
 
   @override
   @JsonKey(name: 'result')
@@ -161,14 +204,14 @@ class _$_OrderBookResponse implements _OrderBookResponse {
 
   @override
   String toString() {
-    return 'OrderBookResponse(orderBook: $orderBook, returnMessage: $returnMessage, returnCode: $returnCode)';
+    return 'OrderBookResponse.bybit(orderBook: $orderBook, returnMessage: $returnMessage, returnCode: $returnCode)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderBookResponse &&
+            other is _$_OrderBookResponseBybit &&
             (identical(other.orderBook, orderBook) ||
                 other.orderBook == orderBook) &&
             (identical(other.returnMessage, returnMessage) ||
@@ -185,27 +228,95 @@ class _$_OrderBookResponse implements _OrderBookResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderBookResponseCopyWith<_$_OrderBookResponse> get copyWith =>
-      __$$_OrderBookResponseCopyWithImpl<_$_OrderBookResponse>(
+  _$$_OrderBookResponseBybitCopyWith<_$_OrderBookResponseBybit> get copyWith =>
+      __$$_OrderBookResponseBybitCopyWithImpl<_$_OrderBookResponseBybit>(
           this, _$identity);
 
   @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            @JsonKey(name: 'result') OrderBookModel orderBook,
+            @JsonKey(name: 'retMsg') String returnMessage,
+            @JsonKey(name: 'retCode') int returnCode)
+        bybit,
+  }) {
+    return bybit(orderBook, returnMessage, returnCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            @JsonKey(name: 'result') OrderBookModel orderBook,
+            @JsonKey(name: 'retMsg') String returnMessage,
+            @JsonKey(name: 'retCode') int returnCode)?
+        bybit,
+  }) {
+    return bybit?.call(orderBook, returnMessage, returnCode);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'result') OrderBookModel orderBook,
+            @JsonKey(name: 'retMsg') String returnMessage,
+            @JsonKey(name: 'retCode') int returnCode)?
+        bybit,
+    required TResult orElse(),
+  }) {
+    if (bybit != null) {
+      return bybit(orderBook, returnMessage, returnCode);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OrderBookResponseBybit value) bybit,
+  }) {
+    return bybit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OrderBookResponseBybit value)? bybit,
+  }) {
+    return bybit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OrderBookResponseBybit value)? bybit,
+    required TResult orElse(),
+  }) {
+    if (bybit != null) {
+      return bybit(this);
+    }
+    return orElse();
+  }
+
+  @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderBookResponseToJson(
+    return _$$_OrderBookResponseBybitToJson(
       this,
     );
   }
 }
 
-abstract class _OrderBookResponse implements OrderBookResponse {
-  const factory _OrderBookResponse(
+abstract class _OrderBookResponseBybit implements OrderBookResponse {
+  const factory _OrderBookResponseBybit(
           {@JsonKey(name: 'result') required final OrderBookModel orderBook,
           @JsonKey(name: 'retMsg') required final String returnMessage,
           @JsonKey(name: 'retCode') required final int returnCode}) =
-      _$_OrderBookResponse;
+      _$_OrderBookResponseBybit;
 
-  factory _OrderBookResponse.fromJson(Map<String, dynamic> json) =
-      _$_OrderBookResponse.fromJson;
+  factory _OrderBookResponseBybit.fromJson(Map<String, dynamic> json) =
+      _$_OrderBookResponseBybit.fromJson;
 
   @override
   @JsonKey(name: 'result')
@@ -218,25 +329,125 @@ abstract class _OrderBookResponse implements OrderBookResponse {
   int get returnCode;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderBookResponseCopyWith<_$_OrderBookResponse> get copyWith =>
+  _$$_OrderBookResponseBybitCopyWith<_$_OrderBookResponseBybit> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 OrderBookModel _$OrderBookModelFromJson(Map<String, dynamic> json) {
-  return _OrderBookModel.fromJson(json);
+  switch (json['runtimeType']) {
+    case 'binance':
+      return _OrderBookModelBinance.fromJson(json);
+    case 'bybit':
+      return _OrderBookModelBybit.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'OrderBookModel',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
 mixin _$OrderBookModel {
-  @JsonKey(name: 's')
+  @JsonKey(name: 'symbol')
   String get symbol => throw _privateConstructorUsedError;
-  @JsonKey(name: 'ts')
+  @JsonKey(name: 'T')
   int get timestamp => throw _privateConstructorUsedError;
-  @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
+  @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
   List<OrderBookEntryModel> get bids => throw _privateConstructorUsedError;
-  @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
+  @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
   List<OrderBookEntryModel> get asks => throw _privateConstructorUsedError;
-
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            @JsonKey(name: 'symbol')
+                String symbol,
+            @JsonKey(name: 'T')
+                int timestamp,
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)
+        binance,
+    required TResult Function(
+            @JsonKey(name: 's')
+                String symbol,
+            @JsonKey(name: 'ts')
+                int timestamp,
+            @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)
+        bybit,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            @JsonKey(name: 'symbol')
+                String symbol,
+            @JsonKey(name: 'T')
+                int timestamp,
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)?
+        binance,
+    TResult? Function(
+            @JsonKey(name: 's')
+                String symbol,
+            @JsonKey(name: 'ts')
+                int timestamp,
+            @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)?
+        bybit,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'symbol')
+                String symbol,
+            @JsonKey(name: 'T')
+                int timestamp,
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)?
+        binance,
+    TResult Function(
+            @JsonKey(name: 's')
+                String symbol,
+            @JsonKey(name: 'ts')
+                int timestamp,
+            @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)?
+        bybit,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OrderBookModelBinance value) binance,
+    required TResult Function(_OrderBookModelBybit value) bybit,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OrderBookModelBinance value)? binance,
+    TResult? Function(_OrderBookModelBybit value)? bybit,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OrderBookModelBinance value)? binance,
+    TResult Function(_OrderBookModelBybit value)? bybit,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $OrderBookModelCopyWith<OrderBookModel> get copyWith =>
@@ -250,13 +461,13 @@ abstract class $OrderBookModelCopyWith<$Res> {
       _$OrderBookModelCopyWithImpl<$Res, OrderBookModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 's')
+      {@JsonKey(name: 'symbol')
           String symbol,
-      @JsonKey(name: 'ts')
+      @JsonKey(name: 'T')
           int timestamp,
-      @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
+      @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
           List<OrderBookEntryModel> bids,
-      @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
+      @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
           List<OrderBookEntryModel> asks});
 }
 
@@ -300,30 +511,30 @@ class _$OrderBookModelCopyWithImpl<$Res, $Val extends OrderBookModel>
 }
 
 /// @nodoc
-abstract class _$$_OrderBookModelCopyWith<$Res>
+abstract class _$$_OrderBookModelBinanceCopyWith<$Res>
     implements $OrderBookModelCopyWith<$Res> {
-  factory _$$_OrderBookModelCopyWith(
-          _$_OrderBookModel value, $Res Function(_$_OrderBookModel) then) =
-      __$$_OrderBookModelCopyWithImpl<$Res>;
+  factory _$$_OrderBookModelBinanceCopyWith(_$_OrderBookModelBinance value,
+          $Res Function(_$_OrderBookModelBinance) then) =
+      __$$_OrderBookModelBinanceCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 's')
+      {@JsonKey(name: 'symbol')
           String symbol,
-      @JsonKey(name: 'ts')
+      @JsonKey(name: 'T')
           int timestamp,
-      @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
+      @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
           List<OrderBookEntryModel> bids,
-      @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
+      @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
           List<OrderBookEntryModel> asks});
 }
 
 /// @nodoc
-class __$$_OrderBookModelCopyWithImpl<$Res>
-    extends _$OrderBookModelCopyWithImpl<$Res, _$_OrderBookModel>
-    implements _$$_OrderBookModelCopyWith<$Res> {
-  __$$_OrderBookModelCopyWithImpl(
-      _$_OrderBookModel _value, $Res Function(_$_OrderBookModel) _then)
+class __$$_OrderBookModelBinanceCopyWithImpl<$Res>
+    extends _$OrderBookModelCopyWithImpl<$Res, _$_OrderBookModelBinance>
+    implements _$$_OrderBookModelBinanceCopyWith<$Res> {
+  __$$_OrderBookModelBinanceCopyWithImpl(_$_OrderBookModelBinance _value,
+      $Res Function(_$_OrderBookModelBinance) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -334,7 +545,7 @@ class __$$_OrderBookModelCopyWithImpl<$Res>
     Object? bids = null,
     Object? asks = null,
   }) {
-    return _then(_$_OrderBookModel(
+    return _then(_$_OrderBookModelBinance(
       symbol: null == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
@@ -357,8 +568,299 @@ class __$$_OrderBookModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_OrderBookModel implements _OrderBookModel {
-  const _$_OrderBookModel(
+class _$_OrderBookModelBinance implements _OrderBookModelBinance {
+  const _$_OrderBookModelBinance(
+      {@JsonKey(name: 'symbol')
+          required this.symbol,
+      @JsonKey(name: 'T')
+          required this.timestamp,
+      @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+          required final List<OrderBookEntryModel> bids,
+      @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+          required final List<OrderBookEntryModel> asks,
+      final String? $type})
+      : _bids = bids,
+        _asks = asks,
+        $type = $type ?? 'binance';
+
+  factory _$_OrderBookModelBinance.fromJson(Map<String, dynamic> json) =>
+      _$$_OrderBookModelBinanceFromJson(json);
+
+  @override
+  @JsonKey(name: 'symbol')
+  final String symbol;
+  @override
+  @JsonKey(name: 'T')
+  final int timestamp;
+  final List<OrderBookEntryModel> _bids;
+  @override
+  @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+  List<OrderBookEntryModel> get bids {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_bids);
+  }
+
+  final List<OrderBookEntryModel> _asks;
+  @override
+  @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+  List<OrderBookEntryModel> get asks {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_asks);
+  }
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'OrderBookModel.binance(symbol: $symbol, timestamp: $timestamp, bids: $bids, asks: $asks)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OrderBookModelBinance &&
+            (identical(other.symbol, symbol) || other.symbol == symbol) &&
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp) &&
+            const DeepCollectionEquality().equals(other._bids, _bids) &&
+            const DeepCollectionEquality().equals(other._asks, _asks));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      symbol,
+      timestamp,
+      const DeepCollectionEquality().hash(_bids),
+      const DeepCollectionEquality().hash(_asks));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_OrderBookModelBinanceCopyWith<_$_OrderBookModelBinance> get copyWith =>
+      __$$_OrderBookModelBinanceCopyWithImpl<_$_OrderBookModelBinance>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            @JsonKey(name: 'symbol')
+                String symbol,
+            @JsonKey(name: 'T')
+                int timestamp,
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)
+        binance,
+    required TResult Function(
+            @JsonKey(name: 's')
+                String symbol,
+            @JsonKey(name: 'ts')
+                int timestamp,
+            @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)
+        bybit,
+  }) {
+    return binance(symbol, timestamp, bids, asks);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            @JsonKey(name: 'symbol')
+                String symbol,
+            @JsonKey(name: 'T')
+                int timestamp,
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)?
+        binance,
+    TResult? Function(
+            @JsonKey(name: 's')
+                String symbol,
+            @JsonKey(name: 'ts')
+                int timestamp,
+            @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)?
+        bybit,
+  }) {
+    return binance?.call(symbol, timestamp, bids, asks);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'symbol')
+                String symbol,
+            @JsonKey(name: 'T')
+                int timestamp,
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)?
+        binance,
+    TResult Function(
+            @JsonKey(name: 's')
+                String symbol,
+            @JsonKey(name: 'ts')
+                int timestamp,
+            @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)?
+        bybit,
+    required TResult orElse(),
+  }) {
+    if (binance != null) {
+      return binance(symbol, timestamp, bids, asks);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OrderBookModelBinance value) binance,
+    required TResult Function(_OrderBookModelBybit value) bybit,
+  }) {
+    return binance(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OrderBookModelBinance value)? binance,
+    TResult? Function(_OrderBookModelBybit value)? bybit,
+  }) {
+    return binance?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OrderBookModelBinance value)? binance,
+    TResult Function(_OrderBookModelBybit value)? bybit,
+    required TResult orElse(),
+  }) {
+    if (binance != null) {
+      return binance(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_OrderBookModelBinanceToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OrderBookModelBinance implements OrderBookModel {
+  const factory _OrderBookModelBinance(
+          {@JsonKey(name: 'symbol')
+              required final String symbol,
+          @JsonKey(name: 'T')
+              required final int timestamp,
+          @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+              required final List<OrderBookEntryModel> bids,
+          @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+              required final List<OrderBookEntryModel> asks}) =
+      _$_OrderBookModelBinance;
+
+  factory _OrderBookModelBinance.fromJson(Map<String, dynamic> json) =
+      _$_OrderBookModelBinance.fromJson;
+
+  @override
+  @JsonKey(name: 'symbol')
+  String get symbol;
+  @override
+  @JsonKey(name: 'T')
+  int get timestamp;
+  @override
+  @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+  List<OrderBookEntryModel> get bids;
+  @override
+  @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+  List<OrderBookEntryModel> get asks;
+  @override
+  @JsonKey(ignore: true)
+  _$$_OrderBookModelBinanceCopyWith<_$_OrderBookModelBinance> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OrderBookModelBybitCopyWith<$Res>
+    implements $OrderBookModelCopyWith<$Res> {
+  factory _$$_OrderBookModelBybitCopyWith(_$_OrderBookModelBybit value,
+          $Res Function(_$_OrderBookModelBybit) then) =
+      __$$_OrderBookModelBybitCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 's')
+          String symbol,
+      @JsonKey(name: 'ts')
+          int timestamp,
+      @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
+          List<OrderBookEntryModel> bids,
+      @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
+          List<OrderBookEntryModel> asks});
+}
+
+/// @nodoc
+class __$$_OrderBookModelBybitCopyWithImpl<$Res>
+    extends _$OrderBookModelCopyWithImpl<$Res, _$_OrderBookModelBybit>
+    implements _$$_OrderBookModelBybitCopyWith<$Res> {
+  __$$_OrderBookModelBybitCopyWithImpl(_$_OrderBookModelBybit _value,
+      $Res Function(_$_OrderBookModelBybit) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? symbol = null,
+    Object? timestamp = null,
+    Object? bids = null,
+    Object? asks = null,
+  }) {
+    return _then(_$_OrderBookModelBybit(
+      symbol: null == symbol
+          ? _value.symbol
+          : symbol // ignore: cast_nullable_to_non_nullable
+              as String,
+      timestamp: null == timestamp
+          ? _value.timestamp
+          : timestamp // ignore: cast_nullable_to_non_nullable
+              as int,
+      bids: null == bids
+          ? _value._bids
+          : bids // ignore: cast_nullable_to_non_nullable
+              as List<OrderBookEntryModel>,
+      asks: null == asks
+          ? _value._asks
+          : asks // ignore: cast_nullable_to_non_nullable
+              as List<OrderBookEntryModel>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_OrderBookModelBybit implements _OrderBookModelBybit {
+  const _$_OrderBookModelBybit(
       {@JsonKey(name: 's')
           required this.symbol,
       @JsonKey(name: 'ts')
@@ -366,12 +868,14 @@ class _$_OrderBookModel implements _OrderBookModel {
       @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
           required final List<OrderBookEntryModel> bids,
       @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
-          required final List<OrderBookEntryModel> asks})
+          required final List<OrderBookEntryModel> asks,
+      final String? $type})
       : _bids = bids,
-        _asks = asks;
+        _asks = asks,
+        $type = $type ?? 'bybit';
 
-  factory _$_OrderBookModel.fromJson(Map<String, dynamic> json) =>
-      _$$_OrderBookModelFromJson(json);
+  factory _$_OrderBookModelBybit.fromJson(Map<String, dynamic> json) =>
+      _$$_OrderBookModelBybitFromJson(json);
 
   @override
   @JsonKey(name: 's')
@@ -395,16 +899,19 @@ class _$_OrderBookModel implements _OrderBookModel {
     return EqualUnmodifiableListView(_asks);
   }
 
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
   @override
   String toString() {
-    return 'OrderBookModel(symbol: $symbol, timestamp: $timestamp, bids: $bids, asks: $asks)';
+    return 'OrderBookModel.bybit(symbol: $symbol, timestamp: $timestamp, bids: $bids, asks: $asks)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OrderBookModel &&
+            other is _$_OrderBookModelBybit &&
             (identical(other.symbol, symbol) || other.symbol == symbol) &&
             (identical(other.timestamp, timestamp) ||
                 other.timestamp == timestamp) &&
@@ -424,30 +931,148 @@ class _$_OrderBookModel implements _OrderBookModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OrderBookModelCopyWith<_$_OrderBookModel> get copyWith =>
-      __$$_OrderBookModelCopyWithImpl<_$_OrderBookModel>(this, _$identity);
+  _$$_OrderBookModelBybitCopyWith<_$_OrderBookModelBybit> get copyWith =>
+      __$$_OrderBookModelBybitCopyWithImpl<_$_OrderBookModelBybit>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            @JsonKey(name: 'symbol')
+                String symbol,
+            @JsonKey(name: 'T')
+                int timestamp,
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)
+        binance,
+    required TResult Function(
+            @JsonKey(name: 's')
+                String symbol,
+            @JsonKey(name: 'ts')
+                int timestamp,
+            @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)
+        bybit,
+  }) {
+    return bybit(symbol, timestamp, bids, asks);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            @JsonKey(name: 'symbol')
+                String symbol,
+            @JsonKey(name: 'T')
+                int timestamp,
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)?
+        binance,
+    TResult? Function(
+            @JsonKey(name: 's')
+                String symbol,
+            @JsonKey(name: 'ts')
+                int timestamp,
+            @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)?
+        bybit,
+  }) {
+    return bybit?.call(symbol, timestamp, bids, asks);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'symbol')
+                String symbol,
+            @JsonKey(name: 'T')
+                int timestamp,
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)?
+        binance,
+    TResult Function(
+            @JsonKey(name: 's')
+                String symbol,
+            @JsonKey(name: 'ts')
+                int timestamp,
+            @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> bids,
+            @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
+                List<OrderBookEntryModel> asks)?
+        bybit,
+    required TResult orElse(),
+  }) {
+    if (bybit != null) {
+      return bybit(symbol, timestamp, bids, asks);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OrderBookModelBinance value) binance,
+    required TResult Function(_OrderBookModelBybit value) bybit,
+  }) {
+    return bybit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_OrderBookModelBinance value)? binance,
+    TResult? Function(_OrderBookModelBybit value)? bybit,
+  }) {
+    return bybit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OrderBookModelBinance value)? binance,
+    TResult Function(_OrderBookModelBybit value)? bybit,
+    required TResult orElse(),
+  }) {
+    if (bybit != null) {
+      return bybit(this);
+    }
+    return orElse();
+  }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OrderBookModelToJson(
+    return _$$_OrderBookModelBybitToJson(
       this,
     );
   }
 }
 
-abstract class _OrderBookModel implements OrderBookModel {
-  const factory _OrderBookModel(
-      {@JsonKey(name: 's')
-          required final String symbol,
-      @JsonKey(name: 'ts')
-          required final int timestamp,
-      @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
-          required final List<OrderBookEntryModel> bids,
-      @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
-          required final List<OrderBookEntryModel> asks}) = _$_OrderBookModel;
+abstract class _OrderBookModelBybit implements OrderBookModel {
+  const factory _OrderBookModelBybit(
+          {@JsonKey(name: 's')
+              required final String symbol,
+          @JsonKey(name: 'ts')
+              required final int timestamp,
+          @JsonKey(name: 'b', readValue: OrderBookModel.readBidAsk)
+              required final List<OrderBookEntryModel> bids,
+          @JsonKey(name: 'a', readValue: OrderBookModel.readBidAsk)
+              required final List<OrderBookEntryModel> asks}) =
+      _$_OrderBookModelBybit;
 
-  factory _OrderBookModel.fromJson(Map<String, dynamic> json) =
-      _$_OrderBookModel.fromJson;
+  factory _OrderBookModelBybit.fromJson(Map<String, dynamic> json) =
+      _$_OrderBookModelBybit.fromJson;
 
   @override
   @JsonKey(name: 's')
@@ -463,7 +1088,7 @@ abstract class _OrderBookModel implements OrderBookModel {
   List<OrderBookEntryModel> get asks;
   @override
   @JsonKey(ignore: true)
-  _$$_OrderBookModelCopyWith<_$_OrderBookModel> get copyWith =>
+  _$$_OrderBookModelBybitCopyWith<_$_OrderBookModelBybit> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

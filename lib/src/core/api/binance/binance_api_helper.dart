@@ -17,6 +17,7 @@ class BinanceApiHelper implements ApiHelper {
       },
     );
     response.data['symbol'] = symbol;
+    response.data['runtimeType'] = 'binance';
     return OrderBookModel.fromJson(response.data);
   }
 }

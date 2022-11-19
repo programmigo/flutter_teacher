@@ -17,6 +17,8 @@ class BybitApiHelper implements ApiHelper {
         'symbol': symbol,
       },
     );
+    response.data['runtimeType'] = 'bybit';
+    response.data['result']['runtimeType'] = 'bybit';
     return OrderBookResponse.fromJson(response.data).orderBook;
   }
 }
