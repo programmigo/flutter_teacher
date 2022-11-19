@@ -14,6 +14,7 @@ class BinanceApiHelper implements ApiHelper {
       BinanceEndpoints().orderbook,
       queryParameters: {
         'symbol': symbol,
+        'limit': 50,
       },
     );
     response.data['symbol'] = symbol;

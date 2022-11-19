@@ -23,9 +23,9 @@ class OrderBookModel with _$OrderBookModel {
   const factory OrderBookModel.binance({
     @JsonKey(name: 'symbol') required String symbol,
     @JsonKey(name: 'T') required int timestamp,
-    @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+    @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
         required List<OrderBookEntryModel> bids,
-    @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+    @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
         required List<OrderBookEntryModel> asks,
   }) = _OrderBookModelBinance;
 
@@ -45,6 +45,9 @@ class OrderBookModel with _$OrderBookModel {
       (map[key] as List<dynamic>)
           .map((e) => {"price": e[0], "quantity": e[1]})
           .toList();
+
+  static List<Map<String, Object?>> readBidAskReversed(Map map, String key) =>
+      readBidAsk(map, key).reversed.toList();
 }
 
 @freezed

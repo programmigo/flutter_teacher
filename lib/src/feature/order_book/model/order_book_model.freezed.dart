@@ -352,9 +352,9 @@ mixin _$OrderBookModel {
   String get symbol => throw _privateConstructorUsedError;
   @JsonKey(name: 'T')
   int get timestamp => throw _privateConstructorUsedError;
-  @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+  @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
   List<OrderBookEntryModel> get bids => throw _privateConstructorUsedError;
-  @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+  @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
   List<OrderBookEntryModel> get asks => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -363,9 +363,9 @@ mixin _$OrderBookModel {
                 String symbol,
             @JsonKey(name: 'T')
                 int timestamp,
-            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> bids,
-            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> asks)
         binance,
     required TResult Function(
@@ -387,9 +387,9 @@ mixin _$OrderBookModel {
                 String symbol,
             @JsonKey(name: 'T')
                 int timestamp,
-            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> bids,
-            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> asks)?
         binance,
     TResult? Function(
@@ -411,9 +411,9 @@ mixin _$OrderBookModel {
                 String symbol,
             @JsonKey(name: 'T')
                 int timestamp,
-            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> bids,
-            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> asks)?
         binance,
     TResult Function(
@@ -465,9 +465,9 @@ abstract class $OrderBookModelCopyWith<$Res> {
           String symbol,
       @JsonKey(name: 'T')
           int timestamp,
-      @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+      @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
           List<OrderBookEntryModel> bids,
-      @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+      @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
           List<OrderBookEntryModel> asks});
 }
 
@@ -523,9 +523,9 @@ abstract class _$$_OrderBookModelBinanceCopyWith<$Res>
           String symbol,
       @JsonKey(name: 'T')
           int timestamp,
-      @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+      @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
           List<OrderBookEntryModel> bids,
-      @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+      @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
           List<OrderBookEntryModel> asks});
 }
 
@@ -574,9 +574,9 @@ class _$_OrderBookModelBinance implements _OrderBookModelBinance {
           required this.symbol,
       @JsonKey(name: 'T')
           required this.timestamp,
-      @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+      @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
           required final List<OrderBookEntryModel> bids,
-      @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+      @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
           required final List<OrderBookEntryModel> asks,
       final String? $type})
       : _bids = bids,
@@ -594,7 +594,7 @@ class _$_OrderBookModelBinance implements _OrderBookModelBinance {
   final int timestamp;
   final List<OrderBookEntryModel> _bids;
   @override
-  @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+  @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
   List<OrderBookEntryModel> get bids {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_bids);
@@ -602,7 +602,7 @@ class _$_OrderBookModelBinance implements _OrderBookModelBinance {
 
   final List<OrderBookEntryModel> _asks;
   @override
-  @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+  @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
   List<OrderBookEntryModel> get asks {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_asks);
@@ -652,9 +652,9 @@ class _$_OrderBookModelBinance implements _OrderBookModelBinance {
                 String symbol,
             @JsonKey(name: 'T')
                 int timestamp,
-            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> bids,
-            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> asks)
         binance,
     required TResult Function(
@@ -679,9 +679,9 @@ class _$_OrderBookModelBinance implements _OrderBookModelBinance {
                 String symbol,
             @JsonKey(name: 'T')
                 int timestamp,
-            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> bids,
-            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> asks)?
         binance,
     TResult? Function(
@@ -706,9 +706,9 @@ class _$_OrderBookModelBinance implements _OrderBookModelBinance {
                 String symbol,
             @JsonKey(name: 'T')
                 int timestamp,
-            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> bids,
-            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> asks)?
         binance,
     TResult Function(
@@ -774,9 +774,9 @@ abstract class _OrderBookModelBinance implements OrderBookModel {
               required final String symbol,
           @JsonKey(name: 'T')
               required final int timestamp,
-          @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+          @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
               required final List<OrderBookEntryModel> bids,
-          @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+          @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
               required final List<OrderBookEntryModel> asks}) =
       _$_OrderBookModelBinance;
 
@@ -790,10 +790,10 @@ abstract class _OrderBookModelBinance implements OrderBookModel {
   @JsonKey(name: 'T')
   int get timestamp;
   @override
-  @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+  @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
   List<OrderBookEntryModel> get bids;
   @override
-  @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+  @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
   List<OrderBookEntryModel> get asks;
   @override
   @JsonKey(ignore: true)
@@ -943,9 +943,9 @@ class _$_OrderBookModelBybit implements _OrderBookModelBybit {
                 String symbol,
             @JsonKey(name: 'T')
                 int timestamp,
-            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> bids,
-            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> asks)
         binance,
     required TResult Function(
@@ -970,9 +970,9 @@ class _$_OrderBookModelBybit implements _OrderBookModelBybit {
                 String symbol,
             @JsonKey(name: 'T')
                 int timestamp,
-            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> bids,
-            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> asks)?
         binance,
     TResult? Function(
@@ -997,9 +997,9 @@ class _$_OrderBookModelBybit implements _OrderBookModelBybit {
                 String symbol,
             @JsonKey(name: 'T')
                 int timestamp,
-            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'bids', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> bids,
-            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAsk)
+            @JsonKey(name: 'asks', readValue: OrderBookModel.readBidAskReversed)
                 List<OrderBookEntryModel> asks)?
         binance,
     TResult Function(

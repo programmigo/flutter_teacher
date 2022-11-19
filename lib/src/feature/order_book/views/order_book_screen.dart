@@ -111,7 +111,7 @@ class OrderBookScreen extends GetView<OrderBookController> {
                               OrderBookSide.bid)),
                       Expanded(
                           child: _buildOrderBookItem(
-                              orderBook.bids[orderBook.bids.length - 1 - i],
+                              orderBook.asks[orderBook.asks.length - 1 - i],
                               maxAsk,
                               OrderBookSide.ask)),
                     ],

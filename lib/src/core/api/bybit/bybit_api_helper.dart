@@ -15,6 +15,7 @@ class BybitApiHelper implements ApiHelper {
       queryParameters: {
         'category': 'linear',
         'symbol': symbol,
+        'limit': 50,
       },
     );
     response.data['runtimeType'] = 'bybit';

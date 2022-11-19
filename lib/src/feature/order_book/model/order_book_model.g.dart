@@ -28,10 +28,10 @@ _$_OrderBookModelBinance _$$_OrderBookModelBinanceFromJson(
     _$_OrderBookModelBinance(
       symbol: json['symbol'] as String,
       timestamp: json['T'] as int,
-      bids: (OrderBookModel.readBidAsk(json, 'bids') as List<dynamic>)
+      bids: (OrderBookModel.readBidAskReversed(json, 'bids') as List<dynamic>)
           .map((e) => OrderBookEntryModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      asks: (OrderBookModel.readBidAsk(json, 'asks') as List<dynamic>)
+      asks: (OrderBookModel.readBidAskReversed(json, 'asks') as List<dynamic>)
           .map((e) => OrderBookEntryModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       $type: json['runtimeType'] as String?,
