@@ -1,5 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 
+import 'package:flutter_application_1/src/feature/order_book/model/converters.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'order_book_model.freezed.dart';
@@ -40,14 +41,10 @@ class OrderBookModel with _$OrderBookModel {
 @freezed
 class OrderBookEntryModel with _$OrderBookEntryModel {
   const factory OrderBookEntryModel({
-    @JsonKey(readValue: OrderBookEntryModel.stringToDouble)
-        required double price,
-    @JsonKey(readValue: OrderBookEntryModel.stringToDouble)
-        required double quantity,
+    @DoubleConverter() required double price,
+    @DoubleConverter() required double quantity,
   }) = _OrderBookEntryModel;
 
   factory OrderBookEntryModel.fromJson(Map<String, Object?> json) =>
       _$OrderBookEntryModelFromJson(json);
-
-  static double stringToDouble(Map map, String key) => double.parse(map[key]);
 }

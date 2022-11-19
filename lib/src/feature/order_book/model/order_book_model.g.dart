@@ -45,15 +45,13 @@ Map<String, dynamic> _$$_OrderBookModelToJson(_$_OrderBookModel instance) =>
 _$_OrderBookEntryModel _$$_OrderBookEntryModelFromJson(
         Map<String, dynamic> json) =>
     _$_OrderBookEntryModel(
-      price:
-          (OrderBookEntryModel.stringToDouble(json, 'price') as num).toDouble(),
-      quantity: (OrderBookEntryModel.stringToDouble(json, 'quantity') as num)
-          .toDouble(),
+      price: const DoubleConverter().fromJson(json['price'] as String),
+      quantity: const DoubleConverter().fromJson(json['quantity'] as String),
     );
 
 Map<String, dynamic> _$$_OrderBookEntryModelToJson(
         _$_OrderBookEntryModel instance) =>
     <String, dynamic>{
-      'price': instance.price,
-      'quantity': instance.quantity,
+      'price': const DoubleConverter().toJson(instance.price),
+      'quantity': const DoubleConverter().toJson(instance.quantity),
     };

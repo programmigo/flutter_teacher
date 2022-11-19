@@ -16,6 +16,7 @@ class BinanceApiHelper implements ApiHelper {
         'symbol': symbol,
       },
     );
-    return OrderBookResponse.fromJson(response.data).orderBook; // TODO
+    response.data['symbol'] = symbol;
+    return OrderBookModel.fromJson(response.data);
   }
 }

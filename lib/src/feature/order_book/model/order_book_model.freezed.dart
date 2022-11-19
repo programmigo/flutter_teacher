@@ -473,9 +473,9 @@ OrderBookEntryModel _$OrderBookEntryModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrderBookEntryModel {
-  @JsonKey(readValue: OrderBookEntryModel.stringToDouble)
+  @DoubleConverter()
   double get price => throw _privateConstructorUsedError;
-  @JsonKey(readValue: OrderBookEntryModel.stringToDouble)
+  @DoubleConverter()
   double get quantity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -491,8 +491,7 @@ abstract class $OrderBookEntryModelCopyWith<$Res> {
       _$OrderBookEntryModelCopyWithImpl<$Res, OrderBookEntryModel>;
   @useResult
   $Res call(
-      {@JsonKey(readValue: OrderBookEntryModel.stringToDouble) double price,
-      @JsonKey(readValue: OrderBookEntryModel.stringToDouble) double quantity});
+      {@DoubleConverter() double price, @DoubleConverter() double quantity});
 }
 
 /// @nodoc
@@ -533,8 +532,7 @@ abstract class _$$_OrderBookEntryModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(readValue: OrderBookEntryModel.stringToDouble) double price,
-      @JsonKey(readValue: OrderBookEntryModel.stringToDouble) double quantity});
+      {@DoubleConverter() double price, @DoubleConverter() double quantity});
 }
 
 /// @nodoc
@@ -568,19 +566,17 @@ class __$$_OrderBookEntryModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_OrderBookEntryModel implements _OrderBookEntryModel {
   const _$_OrderBookEntryModel(
-      {@JsonKey(readValue: OrderBookEntryModel.stringToDouble)
-          required this.price,
-      @JsonKey(readValue: OrderBookEntryModel.stringToDouble)
-          required this.quantity});
+      {@DoubleConverter() required this.price,
+      @DoubleConverter() required this.quantity});
 
   factory _$_OrderBookEntryModel.fromJson(Map<String, dynamic> json) =>
       _$$_OrderBookEntryModelFromJson(json);
 
   @override
-  @JsonKey(readValue: OrderBookEntryModel.stringToDouble)
+  @DoubleConverter()
   final double price;
   @override
-  @JsonKey(readValue: OrderBookEntryModel.stringToDouble)
+  @DoubleConverter()
   final double quantity;
 
   @override
@@ -619,19 +615,18 @@ class _$_OrderBookEntryModel implements _OrderBookEntryModel {
 
 abstract class _OrderBookEntryModel implements OrderBookEntryModel {
   const factory _OrderBookEntryModel(
-      {@JsonKey(readValue: OrderBookEntryModel.stringToDouble)
-          required final double price,
-      @JsonKey(readValue: OrderBookEntryModel.stringToDouble)
-          required final double quantity}) = _$_OrderBookEntryModel;
+          {@DoubleConverter() required final double price,
+          @DoubleConverter() required final double quantity}) =
+      _$_OrderBookEntryModel;
 
   factory _OrderBookEntryModel.fromJson(Map<String, dynamic> json) =
       _$_OrderBookEntryModel.fromJson;
 
   @override
-  @JsonKey(readValue: OrderBookEntryModel.stringToDouble)
+  @DoubleConverter()
   double get price;
   @override
-  @JsonKey(readValue: OrderBookEntryModel.stringToDouble)
+  @DoubleConverter()
   double get quantity;
   @override
   @JsonKey(ignore: true)
