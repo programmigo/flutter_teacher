@@ -73,9 +73,9 @@ class MyHomePage extends GetView<HomeController> {
         onChanged: (String? value) {
           controller.exchangeDropdownValue.value = value!;
           if (value == SupportedExchanges.binance.name) {
-            Get.find<ProfileController>().apiHelper = BybitApiHelper();
-          } else if (value == SupportedExchanges.bybit.name) {
             Get.find<ProfileController>().apiHelper = BinanceApiHelper();
+          } else if (value == SupportedExchanges.bybit.name) {
+            Get.find<ProfileController>().apiHelper = BybitApiHelper();
           }
         },
         items: SupportedExchanges.values
