@@ -1,8 +1,9 @@
+import 'package:flutter_application_1/src/feature/home/views/home_screen.dart';
 import 'package:flutter_application_1/src/feature/order_book/views/order_book_screen.dart';
 import 'package:flutter_application_1/src/routes/app_routes.dart';
 import 'package:flutter_application_1/src/routes/bindings/counter_binding.dart';
+import 'package:flutter_application_1/src/routes/bindings/home_binding.dart';
 import 'package:flutter_application_1/src/routes/bindings/orderbook_binding.dart';
-import 'package:flutter_application_1/src/views/home.dart';
 import 'package:flutter_application_1/src/views/second.dart';
 import 'package:flutter_application_1/src/views/third.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class AppPages {
     GetPage(
       name: Routes.home,
       page: () => const MyHomePage(title: 'Flutter Demo Home Page'),
+      binding: HomeBinding(),
     ),
     GetPage(
       name: Routes.second,

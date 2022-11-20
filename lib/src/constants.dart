@@ -1,0 +1,4 @@
+enum SupportedExchanges {
+  binance,
+  bybit,
+}

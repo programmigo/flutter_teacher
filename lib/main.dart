@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/src/controllers/profile_controller.dart';
 import 'package:flutter_application_1/src/routes/app_pages.dart';
 import 'package:flutter_application_1/src/routes/app_routes.dart';
 import 'package:get/get.dart';
 
 void main() {
+  initializeServices();
   runApp(const MyApp());
+}
+
+void initializeServices() {
+  Get.lazyPut(() => ProfileController(), fenix: true);
 }
 
 class MyApp extends StatelessWidget {
