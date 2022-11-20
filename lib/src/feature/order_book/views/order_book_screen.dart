@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/src/controllers/profile_controller.dart';
 import 'package:flutter_application_1/src/feature/order_book/controllers/order_book_controller.dart';
 import 'package:flutter_application_1/src/feature/order_book/model/order_book_model.dart';
 import 'package:flutter_application_1/src/model/tickers/tickers_model.dart';
@@ -170,8 +169,7 @@ class OrderBookScreen extends GetView<OrderBookController> {
       padding: const EdgeInsets.all(25),
       child: ElevatedButton(
         onPressed: () => controller.openDrawer(),
-        child: Text(orderBookModel.symbol +
-            Get.find<ProfileController>().apiHelper.toString()),
+        child: Text(orderBookModel.symbol),
       ),
     );
   }
