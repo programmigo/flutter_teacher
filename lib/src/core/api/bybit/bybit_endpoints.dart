@@ -1,6 +1,10 @@
 import 'package:flutter_application_1/src/core/api/exchange_endpoints.dart';
 
 class BybitEndpoints implements ExchangeEndpoints {
+  static const derivativesPublic = '/derivatives/v3/public';
+
   @override
-  String orderbook = '/derivatives/v3/public/order-book/L2';
+  String orderbook = '$derivativesPublic/order-book/L2';
+  @override
+  String tickers = '$derivativesPublic/tickers';
 }

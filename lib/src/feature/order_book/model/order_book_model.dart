@@ -1,6 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 
-import 'package:flutter_application_1/src/feature/order_book/model/converters.dart';
+import 'package:flutter_application_1/src/model/converters.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'order_book_model.freezed.dart';
