@@ -87,79 +87,86 @@ class OrderBookScreen extends GetView<OrderBookController> {
 
   Widget _buildDrawerBody() {
     return SafeArea(
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: const Text(
               "Tickers",
               style: TextStyle(fontSize: 30),
             ),
-            const SizedBox(height: 10),
-            FutureBuilder(
-              future: controller.tickers.value,
-              builder:
-                  (BuildContext context, AsyncSnapshot<TickersModel> snapshot) {
-                if (snapshot.hasData) {
-                  List<TickerItemModel> tickers =
-                      List.from(snapshot.data!.tickers);
-                  tickers
-                      .sort((a, b) => -a.turnover24h.compareTo(b.turnover24h));
+          ),
+          const SizedBox(height: 10),
+          FutureBuilder(
+            future: controller.tickers.value,
+            builder:
+                (BuildContext context, AsyncSnapshot<TickersModel> snapshot) {
+              if (snapshot.hasData) {
+                List<TickerItemModel> tickers =
+                    List.from(snapshot.data!.tickers);
+                tickers.sort((a, b) => -a.turnover24h.compareTo(b.turnover24h));
 
-                  return Expanded(
-                    child: ListView.builder(
-                      itemCount: tickers.length > 100
-                          ? 50
-                          : tickers.length, // TODO: Make it dynamic
-                      itemBuilder: (BuildContext context, int index) =>
-                          Container(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
-                        child: _buildDrawerEntry(tickers[index]),
-                      ),
-                    ),
-                  );
-                }
-                return const SizedBox(
-                  child: Text("Loading..."),
+                return Expanded(
+                  child: ListView.builder(
+                    itemCount: tickers.length > 100
+                        ? 50
+                        : tickers.length, // TODO: Make it dynamic
+                    itemBuilder: (BuildContext context, int index) => Container(
+                        padding: const EdgeInsets.all(10),
+                        color: (controller.symbol == tickers[index].symbol)
+                            ? Colors.grey.withOpacity(0.2)
+                            : Colors.transparent,
+                        child: _buildDrawerEntry(tickers[index])),
+                  ),
                 );
-              },
-            ),
-          ],
-        ),
+              }
+              return const SizedBox(
+                child: Text("Loading..."),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
 
   Widget _buildDrawerEntry(TickerItemModel ticker) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(ticker.symbol),
-            const SizedBox(height: 5),
-            Text(
-              ticker.turnover24h.toPrecision(2).toString(),
-              overflow: TextOverflow.fade,
-            ),
-          ],
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(ticker.lastPrice.toString()),
-            const SizedBox(height: 5),
-            Text(
-              '${ticker.price24hPcnt.toPrecision(2)}%',
-              style: TextStyle(
-                color: ticker.price24hPcnt >= 0 ? Colors.green : Colors.red,
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: () {
+        controller.symbol = ticker.symbol;
+        controller.closeDrawer();
+      },
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(ticker.symbol),
+              const SizedBox(height: 5),
+              Text(
+                ticker.turnover24h.toPrecision(2).toString(),
+                overflow: TextOverflow.fade,
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(ticker.lastPrice.toString()),
+              const SizedBox(height: 5),
+              Text(
+                '${ticker.price24hPcnt.toPrecision(2)}%',
+                style: TextStyle(
+                  color: ticker.price24hPcnt >= 0 ? Colors.green : Colors.red,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 

@@ -10,16 +10,16 @@ class OrderBookController extends GetxController {
   late Rx<Future<OrderBookModel>> orderBook;
   late Rx<Future<TickersModel>> tickers;
   late Timer timer;
-  final RxString symbol = 'BTCUSDT'.obs; // TODO: add symbol change
+  final RxString _symbol = 'BTCUSDT'.obs; // TODO: add symbol change
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void onInit() async {
     final apiHelper = Get.find<ProfileController>().apiHelper;
-    orderBook = apiHelper.fetchOrderBook(symbol.value).obs;
+    orderBook = apiHelper.fetchOrderBook(symbol).obs;
     tickers = apiHelper.fetchTickers().obs;
     timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
-      orderBook.value = apiHelper.fetchOrderBook(symbol.value);
+      orderBook.value = apiHelper.fetchOrderBook(symbol);
       tickers.value = apiHelper.fetchTickers();
     });
     super.onInit();
@@ -34,4 +34,14 @@ class OrderBookController extends GetxController {
   void openDrawer() {
     scaffoldKey.currentState!.openDrawer();
   }
+
+  void closeDrawer() {
+    scaffoldKey.currentState!.closeDrawer();
+  }
+
+  set symbol(String s) {
+    _symbol.value = s;
+  }
+
+  String get symbol => _symbol.value;
 }
