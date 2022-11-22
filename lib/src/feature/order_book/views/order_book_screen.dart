@@ -107,7 +107,7 @@ class OrderBookScreen extends GetView<OrderBookController> {
               if (snapshot.hasData) {
                 List<TickerItemModel> tickers =
                     List.from(snapshot.data!.tickers);
-                tickers.sort((a, b) => -a.turnover24h.compareTo(b.turnover24h));
+                tickers.sort((a, b) => -a.volume24h.compareTo(b.volume24h));
 
                 return Expanded(
                   child: ListView.builder(
@@ -149,7 +149,7 @@ class OrderBookScreen extends GetView<OrderBookController> {
               Text(ticker.symbol),
               const SizedBox(height: 5),
               Text(
-                ticker.turnover24h.toPrecision(2).toString(),
+                ticker.volume24h.toPrecision(2).toString(),
                 overflow: TextOverflow.fade,
               ),
             ],

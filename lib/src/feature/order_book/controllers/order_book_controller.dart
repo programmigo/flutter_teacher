@@ -10,7 +10,7 @@ class OrderBookController extends GetxController {
   late Rx<Future<OrderBookModel>> orderBook;
   late Rx<Future<TickersModel>> tickers;
   late Timer timer;
-  final RxString _symbol = 'BTCUSDT'.obs; // TODO: add symbol change
+  final RxString _symbol = 'BTCUSDT'.obs;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override

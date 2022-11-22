@@ -29,7 +29,11 @@ class BinanceApiHelper implements ApiHelper {
     final response = await httpService.get(
       BinanceEndpoints().tickers,
     );
-    // response.data['result']['runtimeType'] = SupportedExchanges.binance.name;
-    return TickersModel.fromJson({'list': response.data});
+    return TickersModel.fromJson({
+      'list': (response.data as List<dynamic>).map((e) {
+        e['runtimeType'] = SupportedExchanges.binance.name;
+        return e;
+      }).toList()
+    });
   }
 }

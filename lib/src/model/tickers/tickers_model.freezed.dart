@@ -163,7 +163,16 @@ abstract class _TickersModel implements TickersModel {
 }
 
 TickerItemModel _$TickerItemModelFromJson(Map<String, dynamic> json) {
-  return _TickerItemModel.fromJson(json);
+  switch (json['runtimeType']) {
+    case 'binance':
+      return _TickerItemModelBinance.fromJson(json);
+    case 'bybit':
+      return _TickerItemModelBybit.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'TickerItemModel',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
 }
 
 /// @nodoc
@@ -172,12 +181,94 @@ mixin _$TickerItemModel {
   @DoubleConverter()
   double get lastPrice => throw _privateConstructorUsedError;
   @DoubleConverter()
+  @JsonKey(name: "priceChangePercent")
   double get price24hPcnt => throw _privateConstructorUsedError;
   @DoubleConverter()
+  @JsonKey(name: "volume")
   double get volume24h => throw _privateConstructorUsedError;
-  @DoubleConverter()
-  double get turnover24h => throw _privateConstructorUsedError;
-
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String symbol,
+            @DoubleConverter()
+                double lastPrice,
+            @DoubleConverter()
+            @JsonKey(name: "priceChangePercent")
+                double price24hPcnt,
+            @DoubleConverter()
+            @JsonKey(name: "volume")
+                double volume24h)
+        binance,
+    required TResult Function(
+            String symbol,
+            @DoubleConverter() double lastPrice,
+            @DoubleConverter() double price24hPcnt,
+            @DoubleConverter() @JsonKey(name: "turnover24h") double volume24h)
+        bybit,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String symbol,
+            @DoubleConverter()
+                double lastPrice,
+            @DoubleConverter()
+            @JsonKey(name: "priceChangePercent")
+                double price24hPcnt,
+            @DoubleConverter()
+            @JsonKey(name: "volume")
+                double volume24h)?
+        binance,
+    TResult? Function(
+            String symbol,
+            @DoubleConverter() double lastPrice,
+            @DoubleConverter() double price24hPcnt,
+            @DoubleConverter() @JsonKey(name: "turnover24h") double volume24h)?
+        bybit,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String symbol,
+            @DoubleConverter()
+                double lastPrice,
+            @DoubleConverter()
+            @JsonKey(name: "priceChangePercent")
+                double price24hPcnt,
+            @DoubleConverter()
+            @JsonKey(name: "volume")
+                double volume24h)?
+        binance,
+    TResult Function(
+            String symbol,
+            @DoubleConverter() double lastPrice,
+            @DoubleConverter() double price24hPcnt,
+            @DoubleConverter() @JsonKey(name: "turnover24h") double volume24h)?
+        bybit,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_TickerItemModelBinance value) binance,
+    required TResult Function(_TickerItemModelBybit value) bybit,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_TickerItemModelBinance value)? binance,
+    TResult? Function(_TickerItemModelBybit value)? bybit,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TickerItemModelBinance value)? binance,
+    TResult Function(_TickerItemModelBybit value)? bybit,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $TickerItemModelCopyWith<TickerItemModel> get copyWith =>
@@ -192,10 +283,14 @@ abstract class $TickerItemModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String symbol,
-      @DoubleConverter() double lastPrice,
-      @DoubleConverter() double price24hPcnt,
-      @DoubleConverter() double volume24h,
-      @DoubleConverter() double turnover24h});
+      @DoubleConverter()
+          double lastPrice,
+      @DoubleConverter()
+      @JsonKey(name: "priceChangePercent")
+          double price24hPcnt,
+      @DoubleConverter()
+      @JsonKey(name: "volume")
+          double volume24h});
 }
 
 /// @nodoc
@@ -215,7 +310,6 @@ class _$TickerItemModelCopyWithImpl<$Res, $Val extends TickerItemModel>
     Object? lastPrice = null,
     Object? price24hPcnt = null,
     Object? volume24h = null,
-    Object? turnover24h = null,
   }) {
     return _then(_value.copyWith(
       symbol: null == symbol
@@ -234,36 +328,36 @@ class _$TickerItemModelCopyWithImpl<$Res, $Val extends TickerItemModel>
           ? _value.volume24h
           : volume24h // ignore: cast_nullable_to_non_nullable
               as double,
-      turnover24h: null == turnover24h
-          ? _value.turnover24h
-          : turnover24h // ignore: cast_nullable_to_non_nullable
-              as double,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_TickerItemModelCopyWith<$Res>
+abstract class _$$_TickerItemModelBinanceCopyWith<$Res>
     implements $TickerItemModelCopyWith<$Res> {
-  factory _$$_TickerItemModelCopyWith(
-          _$_TickerItemModel value, $Res Function(_$_TickerItemModel) then) =
-      __$$_TickerItemModelCopyWithImpl<$Res>;
+  factory _$$_TickerItemModelBinanceCopyWith(_$_TickerItemModelBinance value,
+          $Res Function(_$_TickerItemModelBinance) then) =
+      __$$_TickerItemModelBinanceCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {String symbol,
-      @DoubleConverter() double lastPrice,
-      @DoubleConverter() double price24hPcnt,
-      @DoubleConverter() double volume24h,
-      @DoubleConverter() double turnover24h});
+      @DoubleConverter()
+          double lastPrice,
+      @DoubleConverter()
+      @JsonKey(name: "priceChangePercent")
+          double price24hPcnt,
+      @DoubleConverter()
+      @JsonKey(name: "volume")
+          double volume24h});
 }
 
 /// @nodoc
-class __$$_TickerItemModelCopyWithImpl<$Res>
-    extends _$TickerItemModelCopyWithImpl<$Res, _$_TickerItemModel>
-    implements _$$_TickerItemModelCopyWith<$Res> {
-  __$$_TickerItemModelCopyWithImpl(
-      _$_TickerItemModel _value, $Res Function(_$_TickerItemModel) _then)
+class __$$_TickerItemModelBinanceCopyWithImpl<$Res>
+    extends _$TickerItemModelCopyWithImpl<$Res, _$_TickerItemModelBinance>
+    implements _$$_TickerItemModelBinanceCopyWith<$Res> {
+  __$$_TickerItemModelBinanceCopyWithImpl(_$_TickerItemModelBinance _value,
+      $Res Function(_$_TickerItemModelBinance) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -273,9 +367,8 @@ class __$$_TickerItemModelCopyWithImpl<$Res>
     Object? lastPrice = null,
     Object? price24hPcnt = null,
     Object? volume24h = null,
-    Object? turnover24h = null,
   }) {
-    return _then(_$_TickerItemModel(
+    return _then(_$_TickerItemModelBinance(
       symbol: null == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
@@ -292,9 +385,273 @@ class __$$_TickerItemModelCopyWithImpl<$Res>
           ? _value.volume24h
           : volume24h // ignore: cast_nullable_to_non_nullable
               as double,
-      turnover24h: null == turnover24h
-          ? _value.turnover24h
-          : turnover24h // ignore: cast_nullable_to_non_nullable
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TickerItemModelBinance implements _TickerItemModelBinance {
+  const _$_TickerItemModelBinance(
+      {required this.symbol,
+      @DoubleConverter()
+          required this.lastPrice,
+      @DoubleConverter()
+      @JsonKey(name: "priceChangePercent")
+          required this.price24hPcnt,
+      @DoubleConverter()
+      @JsonKey(name: "volume")
+          required this.volume24h,
+      final String? $type})
+      : $type = $type ?? 'binance';
+
+  factory _$_TickerItemModelBinance.fromJson(Map<String, dynamic> json) =>
+      _$$_TickerItemModelBinanceFromJson(json);
+
+  @override
+  final String symbol;
+  @override
+  @DoubleConverter()
+  final double lastPrice;
+  @override
+  @DoubleConverter()
+  @JsonKey(name: "priceChangePercent")
+  final double price24hPcnt;
+  @override
+  @DoubleConverter()
+  @JsonKey(name: "volume")
+  final double volume24h;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'TickerItemModel.binance(symbol: $symbol, lastPrice: $lastPrice, price24hPcnt: $price24hPcnt, volume24h: $volume24h)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TickerItemModelBinance &&
+            (identical(other.symbol, symbol) || other.symbol == symbol) &&
+            (identical(other.lastPrice, lastPrice) ||
+                other.lastPrice == lastPrice) &&
+            (identical(other.price24hPcnt, price24hPcnt) ||
+                other.price24hPcnt == price24hPcnt) &&
+            (identical(other.volume24h, volume24h) ||
+                other.volume24h == volume24h));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, symbol, lastPrice, price24hPcnt, volume24h);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TickerItemModelBinanceCopyWith<_$_TickerItemModelBinance> get copyWith =>
+      __$$_TickerItemModelBinanceCopyWithImpl<_$_TickerItemModelBinance>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String symbol,
+            @DoubleConverter()
+                double lastPrice,
+            @DoubleConverter()
+            @JsonKey(name: "priceChangePercent")
+                double price24hPcnt,
+            @DoubleConverter()
+            @JsonKey(name: "volume")
+                double volume24h)
+        binance,
+    required TResult Function(
+            String symbol,
+            @DoubleConverter() double lastPrice,
+            @DoubleConverter() double price24hPcnt,
+            @DoubleConverter() @JsonKey(name: "turnover24h") double volume24h)
+        bybit,
+  }) {
+    return binance(symbol, lastPrice, price24hPcnt, volume24h);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String symbol,
+            @DoubleConverter()
+                double lastPrice,
+            @DoubleConverter()
+            @JsonKey(name: "priceChangePercent")
+                double price24hPcnt,
+            @DoubleConverter()
+            @JsonKey(name: "volume")
+                double volume24h)?
+        binance,
+    TResult? Function(
+            String symbol,
+            @DoubleConverter() double lastPrice,
+            @DoubleConverter() double price24hPcnt,
+            @DoubleConverter() @JsonKey(name: "turnover24h") double volume24h)?
+        bybit,
+  }) {
+    return binance?.call(symbol, lastPrice, price24hPcnt, volume24h);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String symbol,
+            @DoubleConverter()
+                double lastPrice,
+            @DoubleConverter()
+            @JsonKey(name: "priceChangePercent")
+                double price24hPcnt,
+            @DoubleConverter()
+            @JsonKey(name: "volume")
+                double volume24h)?
+        binance,
+    TResult Function(
+            String symbol,
+            @DoubleConverter() double lastPrice,
+            @DoubleConverter() double price24hPcnt,
+            @DoubleConverter() @JsonKey(name: "turnover24h") double volume24h)?
+        bybit,
+    required TResult orElse(),
+  }) {
+    if (binance != null) {
+      return binance(symbol, lastPrice, price24hPcnt, volume24h);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_TickerItemModelBinance value) binance,
+    required TResult Function(_TickerItemModelBybit value) bybit,
+  }) {
+    return binance(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_TickerItemModelBinance value)? binance,
+    TResult? Function(_TickerItemModelBybit value)? bybit,
+  }) {
+    return binance?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TickerItemModelBinance value)? binance,
+    TResult Function(_TickerItemModelBybit value)? bybit,
+    required TResult orElse(),
+  }) {
+    if (binance != null) {
+      return binance(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TickerItemModelBinanceToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TickerItemModelBinance implements TickerItemModel {
+  const factory _TickerItemModelBinance(
+      {required final String symbol,
+      @DoubleConverter()
+          required final double lastPrice,
+      @DoubleConverter()
+      @JsonKey(name: "priceChangePercent")
+          required final double price24hPcnt,
+      @DoubleConverter()
+      @JsonKey(name: "volume")
+          required final double volume24h}) = _$_TickerItemModelBinance;
+
+  factory _TickerItemModelBinance.fromJson(Map<String, dynamic> json) =
+      _$_TickerItemModelBinance.fromJson;
+
+  @override
+  String get symbol;
+  @override
+  @DoubleConverter()
+  double get lastPrice;
+  @override
+  @DoubleConverter()
+  @JsonKey(name: "priceChangePercent")
+  double get price24hPcnt;
+  @override
+  @DoubleConverter()
+  @JsonKey(name: "volume")
+  double get volume24h;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TickerItemModelBinanceCopyWith<_$_TickerItemModelBinance> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_TickerItemModelBybitCopyWith<$Res>
+    implements $TickerItemModelCopyWith<$Res> {
+  factory _$$_TickerItemModelBybitCopyWith(_$_TickerItemModelBybit value,
+          $Res Function(_$_TickerItemModelBybit) then) =
+      __$$_TickerItemModelBybitCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String symbol,
+      @DoubleConverter() double lastPrice,
+      @DoubleConverter() double price24hPcnt,
+      @DoubleConverter() @JsonKey(name: "turnover24h") double volume24h});
+}
+
+/// @nodoc
+class __$$_TickerItemModelBybitCopyWithImpl<$Res>
+    extends _$TickerItemModelCopyWithImpl<$Res, _$_TickerItemModelBybit>
+    implements _$$_TickerItemModelBybitCopyWith<$Res> {
+  __$$_TickerItemModelBybitCopyWithImpl(_$_TickerItemModelBybit _value,
+      $Res Function(_$_TickerItemModelBybit) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? symbol = null,
+    Object? lastPrice = null,
+    Object? price24hPcnt = null,
+    Object? volume24h = null,
+  }) {
+    return _then(_$_TickerItemModelBybit(
+      symbol: null == symbol
+          ? _value.symbol
+          : symbol // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastPrice: null == lastPrice
+          ? _value.lastPrice
+          : lastPrice // ignore: cast_nullable_to_non_nullable
+              as double,
+      price24hPcnt: null == price24hPcnt
+          ? _value.price24hPcnt
+          : price24hPcnt // ignore: cast_nullable_to_non_nullable
+              as double,
+      volume24h: null == volume24h
+          ? _value.volume24h
+          : volume24h // ignore: cast_nullable_to_non_nullable
               as double,
     ));
   }
@@ -302,16 +659,17 @@ class __$$_TickerItemModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TickerItemModel implements _TickerItemModel {
-  const _$_TickerItemModel(
+class _$_TickerItemModelBybit implements _TickerItemModelBybit {
+  const _$_TickerItemModelBybit(
       {required this.symbol,
       @DoubleConverter() required this.lastPrice,
       @DoubleConverter() required this.price24hPcnt,
-      @DoubleConverter() required this.volume24h,
-      @DoubleConverter() required this.turnover24h});
+      @DoubleConverter() @JsonKey(name: "turnover24h") required this.volume24h,
+      final String? $type})
+      : $type = $type ?? 'bybit';
 
-  factory _$_TickerItemModel.fromJson(Map<String, dynamic> json) =>
-      _$$_TickerItemModelFromJson(json);
+  factory _$_TickerItemModelBybit.fromJson(Map<String, dynamic> json) =>
+      _$$_TickerItemModelBybitFromJson(json);
 
   @override
   final String symbol;
@@ -323,62 +681,171 @@ class _$_TickerItemModel implements _TickerItemModel {
   final double price24hPcnt;
   @override
   @DoubleConverter()
+  @JsonKey(name: "turnover24h")
   final double volume24h;
-  @override
-  @DoubleConverter()
-  final double turnover24h;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
 
   @override
   String toString() {
-    return 'TickerItemModel(symbol: $symbol, lastPrice: $lastPrice, price24hPcnt: $price24hPcnt, volume24h: $volume24h, turnover24h: $turnover24h)';
+    return 'TickerItemModel.bybit(symbol: $symbol, lastPrice: $lastPrice, price24hPcnt: $price24hPcnt, volume24h: $volume24h)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TickerItemModel &&
+            other is _$_TickerItemModelBybit &&
             (identical(other.symbol, symbol) || other.symbol == symbol) &&
             (identical(other.lastPrice, lastPrice) ||
                 other.lastPrice == lastPrice) &&
             (identical(other.price24hPcnt, price24hPcnt) ||
                 other.price24hPcnt == price24hPcnt) &&
             (identical(other.volume24h, volume24h) ||
-                other.volume24h == volume24h) &&
-            (identical(other.turnover24h, turnover24h) ||
-                other.turnover24h == turnover24h));
+                other.volume24h == volume24h));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, symbol, lastPrice, price24hPcnt, volume24h, turnover24h);
+  int get hashCode =>
+      Object.hash(runtimeType, symbol, lastPrice, price24hPcnt, volume24h);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TickerItemModelCopyWith<_$_TickerItemModel> get copyWith =>
-      __$$_TickerItemModelCopyWithImpl<_$_TickerItemModel>(this, _$identity);
+  _$$_TickerItemModelBybitCopyWith<_$_TickerItemModelBybit> get copyWith =>
+      __$$_TickerItemModelBybitCopyWithImpl<_$_TickerItemModelBybit>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            String symbol,
+            @DoubleConverter()
+                double lastPrice,
+            @DoubleConverter()
+            @JsonKey(name: "priceChangePercent")
+                double price24hPcnt,
+            @DoubleConverter()
+            @JsonKey(name: "volume")
+                double volume24h)
+        binance,
+    required TResult Function(
+            String symbol,
+            @DoubleConverter() double lastPrice,
+            @DoubleConverter() double price24hPcnt,
+            @DoubleConverter() @JsonKey(name: "turnover24h") double volume24h)
+        bybit,
+  }) {
+    return bybit(symbol, lastPrice, price24hPcnt, volume24h);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            String symbol,
+            @DoubleConverter()
+                double lastPrice,
+            @DoubleConverter()
+            @JsonKey(name: "priceChangePercent")
+                double price24hPcnt,
+            @DoubleConverter()
+            @JsonKey(name: "volume")
+                double volume24h)?
+        binance,
+    TResult? Function(
+            String symbol,
+            @DoubleConverter() double lastPrice,
+            @DoubleConverter() double price24hPcnt,
+            @DoubleConverter() @JsonKey(name: "turnover24h") double volume24h)?
+        bybit,
+  }) {
+    return bybit?.call(symbol, lastPrice, price24hPcnt, volume24h);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            String symbol,
+            @DoubleConverter()
+                double lastPrice,
+            @DoubleConverter()
+            @JsonKey(name: "priceChangePercent")
+                double price24hPcnt,
+            @DoubleConverter()
+            @JsonKey(name: "volume")
+                double volume24h)?
+        binance,
+    TResult Function(
+            String symbol,
+            @DoubleConverter() double lastPrice,
+            @DoubleConverter() double price24hPcnt,
+            @DoubleConverter() @JsonKey(name: "turnover24h") double volume24h)?
+        bybit,
+    required TResult orElse(),
+  }) {
+    if (bybit != null) {
+      return bybit(symbol, lastPrice, price24hPcnt, volume24h);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_TickerItemModelBinance value) binance,
+    required TResult Function(_TickerItemModelBybit value) bybit,
+  }) {
+    return bybit(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_TickerItemModelBinance value)? binance,
+    TResult? Function(_TickerItemModelBybit value)? bybit,
+  }) {
+    return bybit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TickerItemModelBinance value)? binance,
+    TResult Function(_TickerItemModelBybit value)? bybit,
+    required TResult orElse(),
+  }) {
+    if (bybit != null) {
+      return bybit(this);
+    }
+    return orElse();
+  }
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TickerItemModelToJson(
+    return _$$_TickerItemModelBybitToJson(
       this,
     );
   }
 }
 
-abstract class _TickerItemModel implements TickerItemModel {
-  const factory _TickerItemModel(
-          {required final String symbol,
-          @DoubleConverter() required final double lastPrice,
-          @DoubleConverter() required final double price24hPcnt,
-          @DoubleConverter() required final double volume24h,
-          @DoubleConverter() required final double turnover24h}) =
-      _$_TickerItemModel;
+abstract class _TickerItemModelBybit implements TickerItemModel {
+  const factory _TickerItemModelBybit(
+      {required final String symbol,
+      @DoubleConverter()
+          required final double lastPrice,
+      @DoubleConverter()
+          required final double price24hPcnt,
+      @DoubleConverter()
+      @JsonKey(name: "turnover24h")
+          required final double volume24h}) = _$_TickerItemModelBybit;
 
-  factory _TickerItemModel.fromJson(Map<String, dynamic> json) =
-      _$_TickerItemModel.fromJson;
+  factory _TickerItemModelBybit.fromJson(Map<String, dynamic> json) =
+      _$_TickerItemModelBybit.fromJson;
 
   @override
   String get symbol;
@@ -390,12 +857,10 @@ abstract class _TickerItemModel implements TickerItemModel {
   double get price24hPcnt;
   @override
   @DoubleConverter()
+  @JsonKey(name: "turnover24h")
   double get volume24h;
   @override
-  @DoubleConverter()
-  double get turnover24h;
-  @override
   @JsonKey(ignore: true)
-  _$$_TickerItemModelCopyWith<_$_TickerItemModel> get copyWith =>
+  _$$_TickerItemModelBybitCopyWith<_$_TickerItemModelBybit> get copyWith =>
       throw _privateConstructorUsedError;
 }

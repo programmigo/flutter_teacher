@@ -31,7 +31,13 @@ class BybitApiHelper implements ApiHelper {
       BybitEndpoints().tickers,
       queryParameters: {'category': 'linear'},
     );
-    // response.data['result']['runtimeType'] = SupportedExchanges.bybit.name;
+
+    response.data['result']['list'] =
+        (response.data['result']['list'] as List<dynamic>).map((e) {
+      e['runtimeType'] = SupportedExchanges.bybit.name;
+      return e;
+    }).toList();
+
     return TickersModel.fromJson(response.data['result']);
   }
 }
