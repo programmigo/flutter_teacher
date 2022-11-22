@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/src/feature/order_book/controllers/order_book_controller.dart';
 import 'package:flutter_application_1/src/feature/order_book/model/order_book_model.dart';
@@ -182,10 +184,6 @@ class OrderBookScreen extends GetView<OrderBookController> {
   }
 
   Widget _buildOrderBook(OrderBookModel orderBook) {
-    if (orderBook.bids.length != orderBook.asks.length) {
-      return const Text("Error occured!");
-    }
-
     final maxBid = orderBook.bids
         .reduce((value, element) =>
             value.quantity > element.quantity ? value : element)
@@ -194,38 +192,37 @@ class OrderBookScreen extends GetView<OrderBookController> {
         .reduce((value, element) =>
             value.quantity > element.quantity ? value : element)
         .quantity;
+    final maxLength = max(orderBook.bids.length, orderBook.asks.length);
+    final List<Widget> children = [];
 
-    return Column(
-      children: [
-        ...orderBook.bids
-            .asMap()
-            .map(
-              (i, element) => MapEntry(
-                i,
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                          child: _buildOrderBookItem(
-                              orderBook.bids[orderBook.bids.length - 1 - i],
-                              maxBid,
-                              OrderBookSide.bid)),
-                      Expanded(
-                          child: _buildOrderBookItem(
-                              orderBook.asks[orderBook.asks.length - 1 - i],
-                              maxAsk,
-                              OrderBookSide.ask)),
-                    ],
-                  ),
-                ),
-              ),
-            )
-            .values
-            .toList()
-      ],
-    );
+    for (var i = 0; i < maxLength; i++) {
+      children.add(
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                  child: (orderBook.bids.length - 1 - i >= 0)
+                      ? _buildOrderBookItem(
+                          orderBook.bids[orderBook.bids.length - 1 - i],
+                          maxBid,
+                          OrderBookSide.bid)
+                      : Container()),
+              Expanded(
+                  child: (orderBook.asks.length - 1 - i >= 0)
+                      ? _buildOrderBookItem(
+                          orderBook.asks[orderBook.asks.length - 1 - i],
+                          maxAsk,
+                          OrderBookSide.ask)
+                      : Container()),
+            ],
+          ),
+        ),
+      );
+    }
+
+    return Column(children: children);
   }
 
   Widget _buildOrderBookItem(
