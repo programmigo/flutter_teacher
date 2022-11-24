@@ -80,12 +80,12 @@ class MyHomePage extends GetView<HomeController> {
         },
         items: SupportedExchanges.values
             .map((e) => e.name)
-            .map<DropdownMenuItem<String>>((String value) {
-          return DropdownMenuItem<String>(
-            value: value,
-            child: Text(value),
-          );
-        }).toList(),
+            .map<DropdownMenuItem<String>>(
+                (String value) => DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    ))
+            .toList(),
       ),
     );
   }
